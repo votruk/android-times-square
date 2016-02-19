@@ -2,5 +2,5 @@
 <!-- Copyright 2015 Square, Inc. -->
 
 <resources>
-  <string name="invalid_date">La fecha deberá ser entre %1$s y %2$s.</string>
+    <string name="invalid_date">La fecha deberá ser entre %1$s y %2$s.</string>
 </resources>

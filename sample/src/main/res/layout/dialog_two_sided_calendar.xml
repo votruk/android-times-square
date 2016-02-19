@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/dialog_calendar_tabs_container"
+        android:layout_width="match_parent"
+        android:layout_height="48dp">
+
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/dialog_calendar_begin_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Начало"/>
+
+            <View
+                android:id="@+id/dialog_calendar_begin_strip"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_gravity="bottom"
+                android:background="@color/app_main_color"/>
+
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/dialog_calendar_end_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Конец"/>
+
+
+            <View
+                android:id="@+id/dialog_calendar_end_strip"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_gravity="bottom"
+                android:background="@color/app_main_color"
+                android:visibility="gone"/>
+
+        </FrameLayout>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="16dp"
+        android:background="@color/app_main_color"/>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <com.squareup.timessquare.CalendarPickerView
+            android:id="@+id/dialog_calendar_start_calendar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:clipToPadding="false"
+            android:paddingBottom="16dp"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:scrollbarStyle="outsideOverlay"
+            android:visibility="visible"
+            app:tsquare_dayBackground="@drawable/dbo_calendar_start_bg_selector"
+            app:tsquare_dayTextColor="@color/dbo_calendar_text_selector"
+            app:tsquare_dividerColor="@color/transparent"
+            app:tsquare_headerTextColor="@color/dbo_header_text"
+            app:tsquare_titleTextColor="@color/app_main_color"/>
+
+        <com.squareup.timessquare.CalendarPickerView
+            android:id="@+id/dialog_calendar_end_calendar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:clipToPadding="false"
+            android:paddingBottom="16dp"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:scrollbarStyle="outsideOverlay"
+            android:visibility="gone"
+            app:tsquare_dayBackground="@drawable/dbo_calendar_end_bg_selector"
+            app:tsquare_dayTextColor="@color/dbo_calendar_text_selector"
+            app:tsquare_dividerColor="@color/transparent"
+            app:tsquare_headerTextColor="@color/dbo_header_text"
+            app:tsquare_titleTextColor="@color/app_main_color"/>
+
+    </FrameLayout>
+
+
+</LinearLayout>

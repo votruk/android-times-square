@@ -8,4 +8,18 @@
     <color name="custom_text_selected">#FFFFFFFF</color>
     <color name="custom_text_inactive">#7f778088</color>
     <color name="transparent">#00000000</color>
+    <color name="white">#fff</color>
+
+    <color name="app_text_black">#333</color>
+    <color name="app_text_half_black">#666</color>
+    <color name="app_main_color">#00985F</color>
+    <color name="app_text_grey">#999</color>
+    <color name="app_main_color_light">#8BC5A9</color>
+
+    <color name="dbo_inactive_day">#949494</color>
+    <color name="dbo_selected_day">#00985f</color>
+    <color name="dbo_selected_other_day">#4c00985f</color>
+    <color name="dbo_day">#212121</color>
+    <color name="dbo_header_text">#42a87b</color>
+
 </resources>

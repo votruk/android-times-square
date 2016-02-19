@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2014 Square, Inc. -->
+
+<selector xmlns:android="http://schemas.android.com/apk/res/android"
+          xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:state_pressed="true" android:color="@color/white"/>
+    <item app:tsquare_state_range_first="true" android:color="@color/white"/>
+    <item app:tsquare_state_range_middle="true" android:color="@color/dbo_selected_day"/>
+    <item app:tsquare_state_range_last="true" android:color="@color/white"/>
+    <item android:state_selected="true" android:color="@color/white"/>
+    <item app:tsquare_state_current_month="false" android:color="@color/dbo_inactive_day"/>
+    <item app:tsquare_state_today="true" android:color="@color/white"/>
+    <item app:tsquare_state_selectable="false" android:color="@color/dbo_inactive_day" />
+    <item android:color="@color/dbo_day"/>
+</selector>
