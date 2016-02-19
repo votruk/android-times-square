@@ -61,7 +61,8 @@ public class CalendarPickerView extends ListView {
          * <li>Have one date selected and then select an earlier date.</li>
          * </ul>
          */
-        RANGE
+        RANGE,
+        RANGE_ON_TWO_SCREENS
     }
 
     private final CalendarPickerView.MonthAdapter adapter;
@@ -581,6 +582,8 @@ public class CalendarPickerView extends ListView {
         }
 
         switch (selectionMode) {
+            case RANGE_ON_TWO_SCREENS:
+                clearOldSelections();
             case RANGE:
                 if (selectedCals.size() > 1) {
                     // We've already got a range selected: clear the old one.
@@ -611,6 +614,28 @@ public class CalendarPickerView extends ListView {
             selectedCals.add(newlySelectedCal);
 
             if (selectionMode == SelectionMode.RANGE && selectedCells.size() > 1) {
+                // Select all days in between start and end.
+                Date start = selectedCells.get(0).getDate();
+                Date end = selectedCells.get(1).getDate();
+                selectedCells.get(0).setRangeState(MonthCellDescriptor.RangeState.FIRST);
+                selectedCells.get(1).setRangeState(MonthCellDescriptor.RangeState.LAST);
+
+                for (List<List<MonthCellDescriptor>> month : cells) {
+                    for (List<MonthCellDescriptor> week : month) {
+                        for (MonthCellDescriptor singleCell : week) {
+                            if (singleCell.getDate().after(start)
+                                    && singleCell.getDate().before(end)
+                                    && singleCell.isSelectable()) {
+                                singleCell.setSelected(true);
+                                singleCell.setRangeState(MonthCellDescriptor.RangeState.MIDDLE);
+                                selectedCells.add(singleCell);
+                            }
+                        }
+                    }
+                }
+            }
+
+            if (selectionMode == SelectionMode.RANGE_ON_TWO_SCREENS && selectedCells.size() > 1) {
                 // Select all days in between start and end.
                 Date start = selectedCells.get(0).getDate();
                 Date end = selectedCells.get(1).getDate();

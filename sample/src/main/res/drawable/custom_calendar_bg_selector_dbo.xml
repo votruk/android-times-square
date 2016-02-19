@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<selector xmlns:android="http://schemas.android.com/apk/res/android"
+          xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:state_pressed="true" android:drawable="@drawable/bg_circle_selected_dbo"/>
+    <item app:tsquare_state_range_first="true" android:drawable="@drawable/bg_circle_selected_dbo"/>
+    <item app:tsquare_state_range_middle="true">
+        <shape android:shape="rectangle">
+            <solid android:color="@color/white"/>
+        </shape>
+    </item>
+    <item app:tsquare_state_range_last="true" android:drawable="@drawable/bg_circle_highlighted_dbo"/>
+    <item android:state_selected="true" android:drawable="@drawable/bg_circle_selected_dbo"/>
+    <item app:tsquare_state_current_month="false">
+        <shape android:shape="rectangle">
+            <solid android:color="@color/white"/>
+        </shape>
+    </item>
+    <item app:tsquare_state_today="true" android:drawable="@drawable/bg_circle_today_dbo"/>
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="@color/white"/>
+        </shape>
+    </item>
+</selector>
