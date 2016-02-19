@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -15,6 +16,7 @@ import com.squareup.timessquare.CalendarCellDecorator;
 import com.squareup.timessquare.CalendarPickerView;
 import com.squareup.timessquare.CalendarPickerView.SelectionMode;
 import com.squareup.timessquare.DefaultDayViewAdapter;
+import com.squareup.timessquare.HigherPeakDate;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -83,19 +85,15 @@ public class SampleTimesSquareActivity extends Activity {
         multi.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                setButtonsEnabled(multi);
-
+                showCalendarInDialog("Pimp my calendar!", R.layout.dialog_customized_dbo);
                 calendar.setCustomDayView(new DefaultDayViewAdapter());
-                Calendar today = Calendar.getInstance();
-                ArrayList<Date> dates = new ArrayList<Date>();
-                for (int i = 0; i < 5; i++) {
-                    today.add(Calendar.DAY_OF_MONTH, 3);
-                    dates.add(today.getTime());
-                }
                 calendar.setDecorators(Collections.<CalendarCellDecorator>emptyList());
-                calendar.init(new Date(), nextYear.getTime()) //
-                        .inMode(SelectionMode.MULTIPLE) //
-                        .withSelectedDates(dates);
+                calendar.init(lastYear.getTime(), nextYear.getTime()) //
+                        .inMode(SelectionMode.SINGLE) //
+                        .withSelectedDate(new Date());
+
+                shoTwoSidedDialog(R.layout.dialog_two_sided_calendar, nextYear, lastYear);
+
             }
         });
 
@@ -115,6 +113,8 @@ public class SampleTimesSquareActivity extends Activity {
                 calendar.init(new Date(), nextYear.getTime()) //
                         .inMode(SelectionMode.RANGE) //
                         .withSelectedDates(dates);
+                shoTwoSidedDialog(R.layout.dialog_two_sided_calendar, nextYear, lastYear);
+
             }
         });
 
@@ -147,8 +147,8 @@ public class SampleTimesSquareActivity extends Activity {
             public void onClick(View view) {
                 showCalendarInDialog("Pimp my calendar!", R.layout.dialog_customized_dbo);
                 dialogView.init(lastYear.getTime(), nextYear.getTime())
-                        .inMode(SelectionMode.RANGE)
-                        .withSelectedDate(new Date());
+                        .inMode(SelectionMode.RANGE_ON_TWO_SCREENS)
+                        .setPeakDate(new HigherPeakDate(new Date()));
             }
         });
 
@@ -204,6 +204,25 @@ public class SampleTimesSquareActivity extends Activity {
                 Toast.makeText(SampleTimesSquareActivity.this, toast, LENGTH_SHORT).show();
             }
         });
+    }
+
+    private void shoTwoSidedDialog(int resId, final Calendar nextYear, final Calendar lastYear) {
+        final View dialogContainer = LayoutInflater.from(this).inflate(resId, null);
+        CalendarPickerView startCalendar = (CalendarPickerView) dialogContainer.findViewById(R.id.dialog_calendar_start_calendar);
+        CalendarPickerView endCalendar = (CalendarPickerView) dialogContainer.findViewById(R.id.dialog_calendar_end_calendar);
+        startCalendar.init(lastYear.getTime(), nextYear.getTime())
+                .inMode(SelectionMode.RANGE_ON_TWO_SCREENS)
+                .setPeakDate(new HigherPeakDate(new Date()));
+        endCalendar.init(lastYear.getTime(), nextYear.getTime())
+                .inMode(SelectionMode.RANGE_ON_TWO_SCREENS)
+                .setPeakDate(new HigherPeakDate(new Date()));
+        final AlertDialog exportDialog = new AlertDialog.Builder(this)
+                .setView(dialogContainer)
+                .setCancelable(true)
+                .show();
+
+
+
     }
 
     private void showCalendarInDialog(String title, int layoutResId) {

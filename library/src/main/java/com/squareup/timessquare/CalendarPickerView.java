@@ -100,6 +100,8 @@ public class CalendarPickerView extends ListView {
     private List<CalendarCellDecorator> decorators;
     private DayViewAdapter dayViewAdapter = new DefaultDayViewAdapter();
 
+    private PeakDate peakDate;
+
     public void setDecorators(List<CalendarCellDecorator> decorators) {
         this.decorators = decorators;
         if (null != adapter) {
@@ -324,6 +326,12 @@ public class CalendarPickerView extends ListView {
             displayOnly = true;
             return this;
         }
+
+        public FluentInitializer setPeakDate(final PeakDate peakDate) {
+            CalendarPickerView.this.peakDate = peakDate;
+            return this;
+        }
+
     }
 
     private void validateAndUpdate() {
@@ -584,6 +592,7 @@ public class CalendarPickerView extends ListView {
         switch (selectionMode) {
             case RANGE_ON_TWO_SCREENS:
                 clearOldSelections();
+                break;
             case RANGE:
                 if (selectedCals.size() > 1) {
                     // We've already got a range selected: clear the old one.
@@ -635,10 +644,29 @@ public class CalendarPickerView extends ListView {
                 }
             }
 
-            if (selectionMode == SelectionMode.RANGE_ON_TWO_SCREENS && selectedCells.size() > 1) {
+            //TODO do not enter this statement if peakDate equals selected Date
+            if (selectionMode == SelectionMode.RANGE_ON_TWO_SCREENS && peakDate != null ) {
                 // Select all days in between start and end.
+
+                if (peakDate instanceof LowerPeakDate) {
+                    MonthCellWithMonthIndex monthCellWithMonthIndex = getMonthCellWithIndexByDate(peakDate.getPeakDate());
+                    if (monthCellWithMonthIndex == null) {
+                        return false;
+                    }
+                    selectedCells.add(0, monthCellWithMonthIndex.cell);
+                } else if (peakDate instanceof HigherPeakDate) {
+                    MonthCellWithMonthIndex monthCellWithMonthIndex = getMonthCellWithIndexByDate(peakDate.getPeakDate());
+                    if (monthCellWithMonthIndex == null) {
+                        return false;
+                    }
+                    selectedCells.add(1, monthCellWithMonthIndex.cell);
+                } else {
+                    return false;
+                }
+
                 Date start = selectedCells.get(0).getDate();
                 Date end = selectedCells.get(1).getDate();
+
                 selectedCells.get(0).setRangeState(MonthCellDescriptor.RangeState.FIRST);
                 selectedCells.get(1).setRangeState(MonthCellDescriptor.RangeState.LAST);
 

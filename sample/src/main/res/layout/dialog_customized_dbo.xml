@@ -10,8 +10,8 @@
     android:paddingLeft="16dp"
     android:paddingRight="16dp"
     android:scrollbarStyle="outsideOverlay"
-    app:tsquare_dayBackground="@drawable/custom_calendar_bg_selector_dbo"
-    app:tsquare_dayTextColor="@color/custom_calendar_text_selector_dbo"
+    app:tsquare_dayBackground="@drawable/dbo_calendar_start_bg_selector"
+    app:tsquare_dayTextColor="@color/dbo_calendar_text_selector"
     app:tsquare_dividerColor="@color/transparent"
     app:tsquare_headerTextColor="@color/dbo_header_text"
     app:tsquare_titleTextColor="@color/app_main_color"/>
