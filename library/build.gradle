@@ -18,11 +18,11 @@ afterEvaluate {
 }
 
 android {
-  compileSdkVersion rootProject.ext.compileSdkVersion
-  buildToolsVersion rootProject.ext.buildToolsVersion
+  compileSdkVersion 23
+  buildToolsVersion '23.0.2'
 
   defaultConfig {
-    minSdkVersion rootProject.ext.minSdkVersion
+    minSdkVersion 16
   }
 
   lintOptions {
@@ -39,4 +39,4 @@ dependencies {
   testCompile deps.intellijannotations
 }
 
-apply from: rootProject.file('gradle/gradle-mvn-push.gradle')
+//apply from: rootProject.file('gradle/gradle-mvn-push.gradle')
