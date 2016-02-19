@@ -2,5 +2,5 @@
 <!-- Copyright 2015 Square, Inc. -->
 
 <resources>
-  <string name="invalid_date">Data musi znaleźć się między %1$s a %2$s.</string>
+    <string name="invalid_date">Data musi znaleźć się między %1$s a %2$s.</string>
 </resources>
