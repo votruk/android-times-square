@@ -29,4 +29,5 @@
     <style name="CalendarCell.CalendarDate">
         <item name="android:textSize">@dimen/calendar_text_dbo</item>
     </style>
+
 </resources>

@@ -21,8 +21,8 @@ class MonthCellDescriptor {
     private boolean isHighlighted;
     private RangeState rangeState;
 
-    MonthCellDescriptor(Date date, boolean currentMonth, boolean selectable, boolean selected,
-                        boolean today, boolean highlighted, int value, RangeState rangeState) {
+    MonthCellDescriptor(final Date date, final boolean currentMonth, final boolean selectable, final boolean selected,
+                        final boolean today, final boolean highlighted, final int value, final RangeState rangeState) {
         this.date = date;
         isCurrentMonth = currentMonth;
         isSelectable = selectable;
@@ -49,7 +49,7 @@ class MonthCellDescriptor {
         return isSelected;
     }
 
-    public void setSelected(boolean selected) {
+    public void setSelected(final boolean selected) {
         isSelected = selected;
     }
 
@@ -57,7 +57,7 @@ class MonthCellDescriptor {
         return isHighlighted;
     }
 
-    void setHighlighted(boolean highlighted) {
+    void setHighlighted(final boolean highlighted) {
         isHighlighted = highlighted;
     }
 
@@ -69,7 +69,7 @@ class MonthCellDescriptor {
         return rangeState;
     }
 
-    public void setRangeState(RangeState rangeState) {
+    public void setRangeState(final RangeState rangeState) {
         this.rangeState = rangeState;
     }
 

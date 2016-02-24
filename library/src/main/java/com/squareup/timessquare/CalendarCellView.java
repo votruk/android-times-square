@@ -40,39 +40,39 @@ public class CalendarCellView extends FrameLayout {
     private TextView dayOfMonthTextView;
 
     @SuppressWarnings("UnusedDeclaration") //
-    public CalendarCellView(Context context, AttributeSet attrs) {
+    public CalendarCellView(final Context context, final AttributeSet attrs) {
         super(context, attrs);
     }
 
-    public void setSelectable(boolean isSelectable) {
+    public void setSelectable(final boolean isSelectable) {
         if (this.isSelectable != isSelectable) {
             this.isSelectable = isSelectable;
             refreshDrawableState();
         }
     }
 
-    public void setCurrentMonth(boolean isCurrentMonth) {
+    public void setCurrentMonth(final boolean isCurrentMonth) {
         if (this.isCurrentMonth != isCurrentMonth) {
             this.isCurrentMonth = isCurrentMonth;
             refreshDrawableState();
         }
     }
 
-    public void setToday(boolean isToday) {
+    public void setToday(final boolean isToday) {
         if (this.isToday != isToday) {
             this.isToday = isToday;
             refreshDrawableState();
         }
     }
 
-    public void setRangeState(MonthCellDescriptor.RangeState rangeState) {
+    public void setRangeState(final MonthCellDescriptor.RangeState rangeState) {
         if (this.rangeState != rangeState) {
             this.rangeState = rangeState;
             refreshDrawableState();
         }
     }
 
-    public void setHighlighted(boolean isHighlighted) {
+    public void setHighlighted(final boolean isHighlighted) {
         if (this.isHighlighted != isHighlighted) {
             this.isHighlighted = isHighlighted;
             refreshDrawableState();
@@ -92,7 +92,7 @@ public class CalendarCellView extends FrameLayout {
     }
 
     @Override
-    protected int[] onCreateDrawableState(int extraSpace) {
+    protected int[] onCreateDrawableState(final int extraSpace) {
         final int[] drawableState = super.onCreateDrawableState(extraSpace + 5);
 
         if (isSelectable) {
@@ -122,7 +122,7 @@ public class CalendarCellView extends FrameLayout {
         return drawableState;
     }
 
-    public void setDayOfMonthTextView(TextView textView) {
+    public void setDayOfMonthTextView(final TextView textView) {
         dayOfMonthTextView = textView;
     }
 

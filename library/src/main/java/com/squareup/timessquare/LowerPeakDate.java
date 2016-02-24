@@ -7,7 +7,7 @@ import java.util.Date;
  */
 public class LowerPeakDate implements PeakDate {
 
-    private Date lowerPeakDate;
+    private final Date lowerPeakDate;
 
     public LowerPeakDate(final Date lowerPeakDate) {
         this.lowerPeakDate = lowerPeakDate;
